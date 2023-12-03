@@ -1,1 +1,3 @@
 # od
+open device
+
