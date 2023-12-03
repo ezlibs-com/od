@@ -1,0 +1,42 @@
+#-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-
+#
+# Makefile.Defines.android-armeabi - Z:\daily\src\library\Makefile.Defines\
+#
+# Copyright (C) 2015 ezlibs.com, All Rights Reserved.
+#
+# $Id: Makefile.Defines.android-armeabi 1 2015-08-07 03:21:31 WuJunjie Exp $
+#
+# explain
+#      exp
+#
+# Update:
+#    2015-08-07 03:21 WuJunjie Create
+#
+#-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-
+
+#move to ~/.bash_profile
+#export NDK_ROOT_GCC_androideabi=$(NDK_ROOT)/toolchains/arm-linux-androideabi-4.4.3/prebuilt/linux-x86/bin
+#export NDK_ROOT_GCC_mips=$(NDK_ROOT)/toolchains/mipsel-linux-android-4.4.3/prebuilt/linux-x86/bin
+#export NDK_ROOT_GCC_x86=$(NDK_ROOT)/toolchains/x86-4.4.3/prebuilt/linux-x86/bin
+
+CROSS   = $(NDK_ROOT_GCC_androideabi)/arm-linux-androideabi-
+CC      = $(CROSS)gcc --sysroot=$(NDK_ROOT)/platforms/android-14/arch-arm
+CPP     = $(CROSS)g++ --sysroot=$(NDK_ROOT)/platforms/android-14/arch-arm
+CXX     = $(CROSS)g++ --sysroot=$(NDK_ROOT)/platforms/android-14/arch-arm
+LD      = $(CROSS)ld
+AR      = $(CROSS)ar
+RANLIB  = $(CROSS)ranlib
+STRIP	= $(CROSS)strip
+
+AR_FLAG = cru
+
+CFLAGS  += -Wall -O2 -Os
+CFLAGS  += -fomit-frame-pointer
+#CFLAGS	+= -Wstrict-prototypes
+
+CFLAGS  += $(INCLUDE)
+#CFLAGS  += -D_VERSION='"$(VERSION)"'
+
+# uncomment depending on your operating system
+CFLAGS +=	-DLINUX
+CFLAGS +=   -D_ANDROID
